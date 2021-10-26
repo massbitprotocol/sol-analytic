@@ -5,7 +5,7 @@
         type="text"
         @focus="showDropdown = true"
         placeholder="Search transactions, blocks"
-        class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full pr-10"
+        class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-base border-0 shadow outline-none focus:outline-none focus:ring w-full pr-10"
       />
       <span
         class="h-full leading-snug font-normal absolute text-center text-blueGray-300 absolute bg-transparent rounded text-base items-center justify-center w-8 right-0 pr-3 py-3"
@@ -48,10 +48,10 @@
           divide-gray-100
           focus:outline-none"
       >
-        <div class="px-4 py-2 text-sm">
+        <div class="px-4 py-2 text-base">
           Search
         </div>
-        <div class="hover:bg-gray-50 block px-4 py-2 text-sm">
+        <div class="hover:bg-gray-50 block px-4 py-2 text-base">
           ok
         </div>
       </div>
