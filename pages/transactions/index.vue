@@ -1,16 +1,18 @@
 <template>
   <div class="pb-5">
-    <div class="text-4xl font-bold mb-5">
+    <div class="text-3xl font-bold mb-5">
       Transactions
     </div>
 
     <TransactionTable :columns="columns" :data-source="dataSource">
       <template #block="{item}">
-        <NuxtLink class="text-sm text-blue-500" :to="{ name: '' }"> #{{ item }} </NuxtLink>
+        <NuxtLink class="text-base text-blue-500" :to="{ name: 'blocks-id', params: { id: item } }">
+          #{{ item }}
+        </NuxtLink>
       </template>
 
       <template #by="{item}">
-        <NuxtLink class="text-sm text-blue-500" :to="{ name: '' }">
+        <NuxtLink class="text-base text-blue-500" :to="{ name: '' }">
           {{ item }}
         </NuxtLink>
       </template>
@@ -33,7 +35,7 @@
             ></path>
           </svg>
           <NuxtLink
-            class="text-sm text-blue-500 overflow-ellipsis whitespace-nowrap break-words overflow-hidden"
+            class="text-base text-blue-500 overflow-ellipsis whitespace-nowrap break-words overflow-hidden"
             :to="{ name: 'transactions-id', params: { id: item } }"
           >
             {{ item }}
@@ -42,7 +44,7 @@
       </template>
 
       <template #timestamp="{item}">
-        <span class="text-sm text-gray-900">
+        <span class="text-base text-gray-900">
           {{ item | formatTimeDuration }}
         </span>
       </template>
@@ -50,16 +52,16 @@
       <template #instructions="{item,record}">
         <template v-if="Array.isArray(item) && item.length > 0">
           <div
-            class="inline-grid text-sm text-blue-500 overflow-ellipsis whitespace-nowrap break-words overflow-hidden"
+            class="inline-grid text-base text-blue-500 overflow-ellipsis whitespace-nowrap break-words overflow-hidden"
             v-if="item.length === 1"
           >
-            <a href="#" class="text-sm text-blue-500 overflow-ellipsis whitespace-nowrap break-words overflow-hidden">
+            <a href="#" class="text-base text-blue-500 overflow-ellipsis whitespace-nowrap break-words overflow-hidden">
               {{ item[0] }}
             </a>
           </div>
           <div v-else class="inline-grid grid-cols-1 gap-2">
             <div
-              class="flex items-center gap-1 text-sm overflow-ellipsis whitespace-nowrap break-words overflow-hidden"
+              class="flex items-center gap-1 text-base overflow-ellipsis whitespace-nowrap break-words overflow-hidden"
             >
               <a class="text-blue-500 overflow-ellipsis whitespace-nowrap break-words overflow-hidden" href="">
                 {{ item[0] }}
@@ -76,7 +78,7 @@
                 v-if="cacheShowAllInstuction.get(record[2]) && index > 0"
                 :key="index"
                 href=""
-                class="text-sm text-blue-500 overflow-ellipsis whitespace-nowrap break-words overflow-hidden"
+                class="text-base text-blue-500 overflow-ellipsis whitespace-nowrap break-words overflow-hidden"
               >
                 {{ instruction }}
               </a>

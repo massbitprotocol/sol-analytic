@@ -1,24 +1,24 @@
 <template>
   <div class="pb-5">
-    <div class="text-4xl font-bold mb-5">
+    <div class="text-3xl font-bold mb-5">
       Blocks
     </div>
 
     <BaseTable :columns="columns" :data-source="dataSource">
       <template #block_slot="{record,item}">
-        <NuxtLink class="text-sm text-blue-500" :to="{ name: 'blocks-id', params: { id: record.block_slot } }">
+        <NuxtLink class="text-base text-blue-500" :to="{ name: 'blocks-id', params: { id: record.block_slot } }">
           #{{ item }}
         </NuxtLink>
       </template>
 
       <template #leader="{item}">
-        <NuxtLink class="text-sm text-blue-500" :to="{ name: '' }">
+        <NuxtLink class="text-base text-blue-500" :to="{ name: '' }">
           {{ item }}
         </NuxtLink>
       </template>
 
       <template #block-hash="{record,item}">
-        <NuxtLink class="text-sm text-blue-500" :to="{ name: 'blocks-id', params: { id: record.block_slot } }">
+        <NuxtLink class="text-base text-blue-500" :to="{ name: 'blocks-id', params: { id: record.block_slot } }">
           {{ item }}
         </NuxtLink>
       </template>

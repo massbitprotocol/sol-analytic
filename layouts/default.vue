@@ -30,7 +30,7 @@
                 :to="{ name: 'blocks' }"
                 class="
                   space-x-1
-                  text-sm
+                  text-base
                   uppercase
                   px-3
                   no-underline 
@@ -48,7 +48,7 @@
                 :to="{ name: 'transactions' }"
                 class="
                   space-x-1
-                  text-sm
+                  text-base
                   uppercase
                   px-3
                   no-underline 

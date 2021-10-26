@@ -33,7 +33,7 @@
                   :class="[column.class, 'relative px-6 py-4 max-w-0 align-top']"
                 >
                   <slot v-if="column.slotScope" :name="column.slotScope" :record="data" :item="data[column.key]"></slot>
-                  <div v-else class="text-sm text-gray-900">
+                  <div v-else class="text-base text-gray-900">
                     <template v-if="data[column.key]">
                       {{ data[column.key] }}
                     </template>
