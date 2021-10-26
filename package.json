@@ -12,7 +12,8 @@
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/dayjs": "^1.4.1",
     "core-js": "^3.15.1",
-    "nuxt": "^2.15.7"
+    "nuxt": "^2.15.7",
+    "v-tooltip": "^3.0.0-alpha.21"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^4.2.0",

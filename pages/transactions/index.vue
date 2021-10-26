@@ -12,13 +12,20 @@
       </template>
 
       <template #by="{item}">
-        <NuxtLink class="text-base text-blue-500" :to="{ name: '' }">
+        <NuxtLink
+          class="text-base text-blue-500"
+          :to="{ name: '' }"
+          v-tooltip.bottom-start="{ content: `${item}`, class: 'hide-arrow text-xs' }"
+        >
           {{ item }}
         </NuxtLink>
       </template>
 
       <template #signature="{item,record}">
-        <div class="inline-grid items-center">
+        <div
+          class="inline-grid items-center"
+          v-tooltip.bottom-start="{ content: `${item}`, class: 'hide-arrow text-xs' }"
+        >
           <svg
             v-if="!record[6] || !parseInt(record[6])"
             class="text-xs text-red-600 absolute left-1.5"
@@ -55,7 +62,11 @@
             class="inline-grid text-base text-blue-500 overflow-ellipsis whitespace-nowrap break-words overflow-hidden"
             v-if="item.length === 1"
           >
-            <a href="#" class="text-base text-blue-500 overflow-ellipsis whitespace-nowrap break-words overflow-hidden">
+            <a
+              href="#"
+              class="text-base text-blue-500 overflow-ellipsis whitespace-nowrap break-words overflow-hidden"
+              v-tooltip.bottom-start="{ content: `${item[0]}`, class: 'hide-arrow text-xs' }"
+            >
               {{ item[0] }}
             </a>
           </div>
@@ -63,7 +74,11 @@
             <div
               class="flex items-center gap-1 text-base overflow-ellipsis whitespace-nowrap break-words overflow-hidden"
             >
-              <a class="text-blue-500 overflow-ellipsis whitespace-nowrap break-words overflow-hidden" href="">
+              <a
+                class="text-blue-500 overflow-ellipsis whitespace-nowrap break-words overflow-hidden"
+                href=""
+                v-tooltip.bottom-start="{ content: `${item[0]}`, class: 'hide-arrow text-xs' }"
+              >
                 {{ item[0] }}
               </a>
               <div
@@ -77,8 +92,9 @@
               <a
                 v-if="cacheShowAllInstuction.get(record[2]) && index > 0"
                 :key="index"
-                href=""
                 class="text-base text-blue-500 overflow-ellipsis whitespace-nowrap break-words overflow-hidden"
+                href=""
+                v-tooltip.bottom-start="{ content: `${instruction}`, class: 'hide-arrow text-xs' }"
               >
                 {{ instruction }}
               </a>
