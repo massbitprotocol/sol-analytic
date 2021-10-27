@@ -25,9 +25,9 @@
           id="nav-content"
         >
           <ul class="h-full list-reset lg:flex justify-end flex-1 items-center">
-            <li class="h-full mr-3">
+            <li v-for="(route, index) in routes" :key="index" class="h-full mr-3">
               <NuxtLink
-                :to="{ name: 'blocks' }"
+                :to="{ name: route.path }"
                 class="
                   relative
                   h-full
@@ -43,51 +43,7 @@
                 "
                 exact-active-class="after:absolute after:inset-x-0 after:border-b-2 after:border-primary after:-bottom-px"
               >
-                <span>Blocks</span>
-              </NuxtLink>
-            </li>
-
-            <li class="h-full mr-3">
-              <NuxtLink
-                :to="{ name: 'transactions' }"
-                class="
-                  relative
-                  h-full
-                  flex
-                  items-center
-                  space-x-1
-                  text-base
-                  uppercase
-                  px-3
-                  no-underline 
-                  hover:text-gray-900 
-                  hover:text-underline
-                "
-                exact-active-class="after:absolute after:inset-x-0 after:border-b-2 after:border-primary after:-bottom-px"
-              >
-                <span>Transactions</span>
-              </NuxtLink>
-            </li>
-
-            <li class="h-full mr-3">
-              <NuxtLink
-                :to="{ name: 'tokens' }"
-                class="
-                  relative
-                  h-full
-                  flex
-                  items-center
-                  space-x-1
-                  text-base
-                  uppercase
-                  px-3
-                  no-underline 
-                  hover:text-gray-900 
-                  hover:text-underline
-                "
-                exact-active-class="after:absolute after:inset-x-0 after:border-b-2 after:border-primary after:-bottom-px"
-              >
-                <span>Tokens</span>
+                <span>{{ route.name }}</span>
               </NuxtLink>
             </li>
           </ul>
@@ -102,7 +58,31 @@
 </template>
 
 <script>
+const routes = [
+  {
+    name: 'Blocks',
+    path: 'blocks',
+  },
+  {
+    name: 'Transactions',
+    path: 'transactions',
+  },
+  {
+    name: 'Tokens',
+    path: 'tokens',
+  },
+  {
+    name: 'Charts',
+    path: 'charts',
+  },
+];
 export default {
   name: 'LayoutDefault',
+
+  data() {
+    return {
+      routes,
+    };
+  },
 };
 </script>

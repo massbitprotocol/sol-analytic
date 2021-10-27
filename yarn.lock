@@ -913,6 +913,11 @@
   resolved "https://registry.yarnpkg.com/@gar/promisify/-/promisify-1.1.2.tgz#30aa825f11d438671d585bd44e7fd564535fc210"
   integrity sha512-82cpyJyKRoQoRi+14ibCeGPu0CwypgtBAdBhq1WfvagpCZNKqwXbKwXllYSMG91DhmG4jt9gN8eP6lGOtozuaw==
 
+"@highcharts/map-collection@^1.1.3":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@highcharts/map-collection/-/map-collection-1.1.3.tgz#2c483d8fc3dff77e521842ad6224d2a03ea55593"
+  integrity sha512-Kb31dEQc7Kf7dxkmJEUjYlZ2wtRftEumJR/bq3SwvcviZeEhz+t6vMLXqS9qxfeO0UzSOaTCLiNMBsg/W6d7/g==
+
 "@koa/router@^9.0.1":
   version "9.4.0"
   resolved "https://registry.yarnpkg.com/@koa/router/-/router-9.4.0.tgz#734b64c0ae566eb5af752df71e4143edc4748e48"
@@ -4148,6 +4153,11 @@ hex-color-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==
 
+highcharts@^9.3.0:
+  version "9.3.0"
+  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-9.3.0.tgz#999496c8af677d5f08e41e2e708d3eb7baf56640"
+  integrity sha512-nQ7yW5ni7wFiPgDN2IWrS6o6NjL1gK/OhZjrdpyB3FQuefMkTQngygP+JqZFMx7PDrP3YAvfejx0M5IgkC01ow==
+
 hmac-drbg@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/hmac-drbg/-/hmac-drbg-1.0.1.tgz#d2745701025a6c775a6c545793ed502fc0c649a1"
@@ -5636,6 +5646,15 @@ num2fraction@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/num2fraction/-/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
   integrity sha1-b2gragJ6Tp3fpFZM0lidHU5mnt4=
+
+nuxt-highcharts@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/nuxt-highcharts/-/nuxt-highcharts-2.0.1.tgz#e0cf3ba8c7513afa82cee21f1083fe28b53672f0"
+  integrity sha512-kFOmJTGcg1E5fJ1Kx6SKWESa3RcsbC+QIOfj26HbzPHMfpX37C83zneSxW63+tSdQvDTSA8ipMzxqb7YSpZpbQ==
+  dependencies:
+    highcharts "^9.3.0"
+  optionalDependencies:
+    "@highcharts/map-collection" "^1.1.3"
 
 nuxt@^2.15.7:
   version "2.15.8"
