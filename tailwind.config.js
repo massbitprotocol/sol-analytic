@@ -11,7 +11,11 @@ module.exports = {
       container: {
         padding: '1rem',
       },
-      colors: {},
+      colors: {
+        primary: {
+          DEFAULT: '#2196F3',
+        },
+      },
       fontFamily: {
         sans: ['Airbnb Cereal App', ...themes.fontFamily.sans],
       },

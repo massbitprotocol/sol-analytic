@@ -37,6 +37,7 @@
                       v-if="column.slotScope"
                       :name="column.slotScope"
                       :record="data"
+                      :index="index"
                       :item="data[column.dataIndex]"
                     ></slot>
                     <div v-else class="text-base text-gray-900">

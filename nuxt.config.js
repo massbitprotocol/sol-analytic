@@ -17,10 +17,15 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: ['~/assets/css/fonts.css', '~/assets/css/tooltip.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/helpers/filters'],
+  plugins: [
+    '~/plugins/helpers/utils',
+    '~/plugins/helpers/filters',
+    '~/plugins/helpers/directives',
+    '~/plugins/tooltip',
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -32,7 +37,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/axios', '@nuxtjs/dayjs'],
+  modules: ['@nuxtjs/axios', '@nuxtjs/dayjs', 'nuxt-highcharts/lib/module.js'],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
@@ -56,6 +61,10 @@ export default {
     },
   },
 
+  loading: {
+    color: '#1976D2',
+  },
+
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 
@@ -63,7 +72,6 @@ export default {
     plugins: ['utc', 'relativeTime', 'duration'],
   },
 
-  loading: {
-    color: '#1976D2',
-  },
+  // Highcharts module configuration: https://github.com/richardeschloss/nuxt-highcharts
+  highcharts: {},
 };
