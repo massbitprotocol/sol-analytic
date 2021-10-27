@@ -1,6 +1,6 @@
 ## Block apis
 Use jsonrpc with entrypoint: http://staging.massbit.io:9090/jsonrpc
-1. Block list: Get list block infos
+**1. Block list: Get list block infos**
 - method: "block_list"
 - Parameters: offset: number, limit: number
 ```
@@ -28,7 +28,7 @@ Use jsonrpc with entrypoint: http://staging.massbit.io:9090/jsonrpc
 ```
   Note: currently this api is missing offset parameter
 
-2. Block detail: Get detail info of a block (Currently block info doesn't have must data)
+**2. Block detail: Get detail info of a block (Currently block info doesn't have must data)**
 - method: "block_detail",
 - Parameters:  block_slot: number
 ```
@@ -52,7 +52,7 @@ Use jsonrpc with entrypoint: http://staging.massbit.io:9090/jsonrpc
 }
 ```
 
-3. Block statistic: Get statistic data of blocks by date in form of unixtimestamp. Order by date decreasing
+**3. Block statistic: Get statistic data of blocks by date in form of unixtimestamp. Order by date decreasing**
 - method: "block_statistic",
 - Parameters:  offset: number, limit: number
 ```
@@ -84,7 +84,7 @@ Use jsonrpc with entrypoint: http://staging.massbit.io:9090/jsonrpc
 ```
 
 ##  Transaction apis
-1. Transaction List: Get common list transaction, order by fist_block_time
+**1. Transaction List: Get common list transaction, order by fist_block_time**
 - Method: "txns_list"
 - Parameters: offset: number, limit: number
 ```
@@ -121,14 +121,14 @@ Use jsonrpc with entrypoint: http://staging.massbit.io:9090/jsonrpc
     "id": 1
 }
 ```
-2. Transaction list by block: Get list transaction included within a block
+**2. Transaction list by block: Get list transaction included within a block**
 - Method: "txns_block"
 - Parameters: block_slot: number, offset: number, limit: number
 ```
 {"jsonrpc": "2.0", "method": "txns_block", "params": [102149431, 0, 100], "id":1 }
 ```
 - Output: same as output of api transaction list
-3. Transaction list by address: get list transactions related to an address
+**3. Transaction list by address: get list transactions related to an address**
 - Method: "txns_address"
 - Parameters: address: text, before_address: text(optional), limit: number
 ```
@@ -137,7 +137,7 @@ or
 {"jsonrpc": "2.0", "method": "txns_address", "params": ["tDw82DpNQwC4sUqRt5zCihm1N9ktta51ZyXbWewMsWp", "oETvTjKHyT3EHnycHV86k4xfTv2gWUSVTmQxkbLkxCkYyEtzPwTrMXva1BfPHYvZzKSkpxKobG2Sw3vJ3PcCEee", 100], "id":1 }
 ```
 - Output: same as output of api transaction list
-4. Transaction detail
+**4. Transaction detail**
 - Method: "txns_detail"
 - Parameters: tx_hash: text
 ```
@@ -191,3 +191,213 @@ or
     "id": 1
 }
 ```
+**5. Get account info**
+- Method: "getAccountInfo"
+- Parameters:
+```
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "getAccountInfo",
+  "params": [
+    "ACCOUNT_ADDRESS",
+    {
+      "encoding": "jsonParsed"
+    }
+  ]
+}
+```
+### General account
+- Call
+```json
+  {
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "getAccountInfo",
+  "params": [
+    "AQYXcjg1ttjfnVA7VUi1qNnePNKjCZo53M8VfvaT9Eq9",
+    {
+      "encoding": "jsonParsed"
+    }
+  ]
+}
+```
+- Return
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "accountType": "Account",
+    "context": {
+      "slot": 103579499
+    },
+    "value": {
+      "data": [
+        "",
+        "base64"
+      ],
+      "executable": false,
+      "lamports": 11430470,
+      "owner": "11111111111111111111111111111111",
+      "rentEpoch": 239
+    }
+  },
+  "id": 1
+}
+```
+
+### Program account
+- Link
+https://solscan.io/account/SSwpkEEcbUqx4vtoEByFjSkhKdCT862DNVb52nZg1UZ/
+- Call
+```json
+{"jsonrpc": "2.0", "method": "get_account_data", "params": ["SSwpkEEcbUqx4vtoEByFjSkhKdCT862DNVb52nZg1UZ","jsonParsed"], "id":1 }
+```
+- Return
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+      "accountType": "ProgramAccount",
+        "context": {
+            "slot": 103553847
+        },
+        "value": {
+            "data": {
+                "parsed": {
+                    "info": {
+                        "programData": "54aePuBcYcf8G3CDrWWd2MEiw6Q7UGy2kjgQBDhqoMdt"
+                    },
+                    "type": "program"
+                },
+                "program": "bpf-upgradeable-loader",
+                "space": 36
+            },
+            "executable": true,
+            "lamports": 1141440,
+            "owner": "BPFLoaderUpgradeab1e11111111111111111111111",
+            "rentEpoch": 185
+        }
+    },
+    "id": 1
+}
+```
+
+### Token account
+- Call
+```json
+  {
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "getAccountInfo",
+  "params": [
+    "2C82bL2X7y5PwbsnxMQjAQW7CC8dcqtrh4ZyGAd5NBpZ",
+    {
+      "encoding": "jsonParsed"
+    }
+  ]
+}
+```
+- Return
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "accountType": "TokenAccount",
+    "context": {
+      "slot": 103580015
+    },
+    "value": {
+      "data": {
+        "parsed": {
+          "info": {
+            "isNative": false,
+            "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+            "owner": "AQYXcjg1ttjfnVA7VUi1qNnePNKjCZo53M8VfvaT9Eq9",
+            "state": "initialized",
+            "tokenAmount": {
+              "amount": "0",
+              "decimals": 6,
+              "uiAmount": 0,
+              "uiAmountString": "0"
+            }
+          },
+          "type": "account"
+        },
+        "program": "spl-token",
+        "space": 165
+      },
+      "executable": false,
+      "lamports": 2039280,
+      "owner": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "rentEpoch": 239
+    }
+  },
+  "id": 1
+}
+```
+
+### Mint account
+- Call
+```json
+  {
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "getAccountInfo",
+  "params": [
+    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    {
+      "encoding": "jsonParsed"
+    }
+  ]
+}
+```
+- Return
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "accountType": "MintAccount",
+    "context": {
+      "slot": 103580291
+    },
+    "value": {
+      "data": {
+        "parsed": {
+          "info": {
+            "decimals": 6,
+            "freezeAuthority": "3sNBr7kMccME5D55xNgsmYpZnzPgP2g12CixAajXypn6",
+            "isInitialized": true,
+            "mintAuthority": "2wmVCSfPxGPjrnMMn7rchp4uaeoTqN39mXFC2zhPdri9",
+            "supply": "2485000019865882"
+          },
+          "type": "mint"
+        },
+        "program": "spl-token",
+        "space": 82
+      },
+      "executable": false,
+      "lamports": 76771211333,
+      "owner": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "rentEpoch": 239
+    }
+  },
+  "id": 1
+}
+```
+### Invalid account address
+- Response
+```json
+{
+    "jsonrpc": "2.0",
+    "error": {
+        "code": -32602,
+        "message": "ClientError { request: Some(GetAccountInfo), kind: RpcError(RpcResponseError { code: -32602, message: \"Invalid param: WrongSize\", data: Empty }) }"
+    },
+    "id": 1
+}
+```
+
+### Notes:
+    - Use the `accountType` field in `result` for determine the account type.
+    - There are 4 account types: `ProgramAccount`, `Account`, `TokenAccount` and `MintAccount`
