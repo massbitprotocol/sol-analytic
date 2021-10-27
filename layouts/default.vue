@@ -1,7 +1,7 @@
 <template>
   <div class="bg-gray-100 leading-normal tracking-normal h-full min-h-screen">
     <nav id="header" class="fixed w-full z-10 top-0 bg-white" style="box-shadow: 0 1px 1rem rgb(128 128 128 / 20%)">
-      <div class="w-full md:max-w-4xl mx-auto flex flex-wrap items-center justify-between mt-0 py-3">
+      <div class="w-full h-16 md:max-w-5xl mx-auto flex flex-wrap items-center justify-between mt-0">
         <div class="pl-4">
           <a class="text-gray-900 text-base no-underline hover:no-underline font-extrabold text-xl" href="#">
             Solana
@@ -21,14 +21,18 @@
         </div>
 
         <div
-          class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-gray-100 md:bg-transparent z-20"
+          class="w-full h-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-gray-100 md:bg-transparent z-20"
           id="nav-content"
         >
-          <ul class="list-reset lg:flex justify-end flex-1 items-center">
-            <li class="mr-3">
+          <ul class="h-full list-reset lg:flex justify-end flex-1 items-center">
+            <li class="h-full mr-3">
               <NuxtLink
                 :to="{ name: 'blocks' }"
                 class="
+                  relative
+                  h-full
+                  flex
+                  items-center
                   space-x-1
                   text-base
                   uppercase
@@ -37,16 +41,20 @@
                   hover:text-gray-900 
                   hover:text-underline
                 "
-                exact-active-class="bg-neutral-darker after:absolute after:inset-x-0 after:border-b-2 after:border-primary after:-bottom-px"
+                exact-active-class="after:absolute after:inset-x-0 after:border-b-2 after:border-primary after:-bottom-px"
               >
                 <span>Blocks</span>
               </NuxtLink>
             </li>
 
-            <li class="mr-3">
+            <li class="h-full mr-3">
               <NuxtLink
                 :to="{ name: 'transactions' }"
                 class="
+                  relative
+                  h-full
+                  flex
+                  items-center
                   space-x-1
                   text-base
                   uppercase
@@ -55,9 +63,31 @@
                   hover:text-gray-900 
                   hover:text-underline
                 "
-                exact-active-class="bg-neutral-darker after:absolute after:inset-x-0 after:border-b-2 after:border-primary after:-bottom-px"
+                exact-active-class="after:absolute after:inset-x-0 after:border-b-2 after:border-primary after:-bottom-px"
               >
                 <span>Transactions</span>
+              </NuxtLink>
+            </li>
+
+            <li class="h-full mr-3">
+              <NuxtLink
+                :to="{ name: 'tokens' }"
+                class="
+                  relative
+                  h-full
+                  flex
+                  items-center
+                  space-x-1
+                  text-base
+                  uppercase
+                  px-3
+                  no-underline 
+                  hover:text-gray-900 
+                  hover:text-underline
+                "
+                exact-active-class="after:absolute after:inset-x-0 after:border-b-2 after:border-primary after:-bottom-px"
+              >
+                <span>Tokens</span>
               </NuxtLink>
             </li>
           </ul>
@@ -65,7 +95,7 @@
       </div>
     </nav>
 
-    <main class="w-full md:max-w-4xl mx-auto pt-20 px-4">
+    <main class="w-full md:max-w-5xl mx-auto pt-20 px-4">
       <Nuxt />
     </main>
   </div>

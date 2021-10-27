@@ -275,7 +275,6 @@ export default {
       params: [parseInt(this.id), this.transactionOffset, this.transactionLimit],
       id: 1,
     });
-    console.log('data :>> ', data);
     if (data.result && data.result.values) {
       if (this.transactionOffset === 0) {
         this.transactions = data.result.values;

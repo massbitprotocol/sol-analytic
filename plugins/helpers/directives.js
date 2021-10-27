@@ -9,6 +9,7 @@ Vue.directive('copy', {
       _el.style.position = 'absolute';
       _el.style.left = '-9999px';
       document.body.appendChild(_el);
+
       const selected = document.getSelection().rangeCount > 0 ? document.getSelection().getRangeAt(0) : false;
       _el.select();
       document.execCommand('copy');

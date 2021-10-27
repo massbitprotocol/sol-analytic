@@ -20,7 +20,12 @@ export default {
   css: ['~/assets/css/fonts.css', '~/assets/css/tooltip.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/helpers/filters', '~/plugins/helpers/directives', '~/plugins/tooltip'],
+  plugins: [
+    '~/plugins/helpers/utils',
+    '~/plugins/helpers/filters',
+    '~/plugins/helpers/directives',
+    '~/plugins/tooltip',
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
