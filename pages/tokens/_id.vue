@@ -312,12 +312,7 @@ export default {
     const data = await $axios.$post('', {
       jsonrpc: '2.0',
       method: 'getAccountInfo',
-      params: [
-        params.id,
-        {
-          encoding: 'jsonParsed',
-        },
-      ],
+      params: [params.id, 'jsonParsed'],
       id: 1,
     });
     if (data.result) {
@@ -331,7 +326,7 @@ export default {
     this.loadingFetchTransactions = true;
     const data = await this.$axios.$post('', {
       jsonrpc: '2.0',
-      method: 'txns_address',
+      method: 'getTransactionByAddress',
       params: [this.id, null, this.transactionLimit],
       id: 1,
     });

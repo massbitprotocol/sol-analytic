@@ -181,7 +181,7 @@ export default {
   async asyncData({ $axios }) {
     const data = await $axios.$post('', {
       jsonrpc: '2.0',
-      method: 'txns_list',
+      method: 'getTransactionList',
       params: [0, 10],
       id: 1,
     });
@@ -214,7 +214,7 @@ export default {
       this.loadingGetMoreTransaction = true;
       const data = await this.$axios.$post('', {
         jsonrpc: '2.0',
-        method: 'txns_list',
+        method: 'getTransactionList',
         params: [this.offset + 10, 10],
         id: 1,
       });

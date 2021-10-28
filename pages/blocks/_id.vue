@@ -256,7 +256,7 @@ export default {
   async asyncData({ $axios, params }) {
     const data = await $axios.$post('', {
       jsonrpc: '2.0',
-      method: 'block_detail_db',
+      method: 'getBlockDetail',
       params: [parseInt(params.id)],
       id: 1,
     });
@@ -271,7 +271,7 @@ export default {
     this.loadingFetchTransactions = true;
     const data = await this.$axios.$post('', {
       jsonrpc: '2.0',
-      method: 'txns_block',
+      method: 'getTransactionByBlock',
       params: [parseInt(this.id), this.transactionOffset, this.transactionLimit],
       id: 1,
     });
