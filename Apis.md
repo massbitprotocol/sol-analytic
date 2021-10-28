@@ -202,9 +202,7 @@ or
   "method": "getAccountInfo",
   "params": [
     "ACCOUNT_ADDRESS",
-    {
-      "encoding": "jsonParsed"
-    }
+    "jsonParsed"
   ]
 }
 ```
@@ -217,9 +215,7 @@ or
   "method": "getAccountInfo",
   "params": [
     "AQYXcjg1ttjfnVA7VUi1qNnePNKjCZo53M8VfvaT9Eq9",
-    {
-      "encoding": "jsonParsed"
-    }
+    "jsonParsed"
   ]
 }
 ```
@@ -293,9 +289,7 @@ https://solscan.io/account/SSwpkEEcbUqx4vtoEByFjSkhKdCT862DNVb52nZg1UZ/
   "method": "getAccountInfo",
   "params": [
     "2C82bL2X7y5PwbsnxMQjAQW7CC8dcqtrh4ZyGAd5NBpZ",
-    {
-      "encoding": "jsonParsed"
-    }
+    "jsonParsed"
   ]
 }
 ```
@@ -347,9 +341,7 @@ https://solscan.io/account/SSwpkEEcbUqx4vtoEByFjSkhKdCT862DNVb52nZg1UZ/
   "method": "getAccountInfo",
   "params": [
     "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
-    {
-      "encoding": "jsonParsed"
-    }
+    "jsonParsed"
   ]
 }
 ```
