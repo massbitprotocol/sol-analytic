@@ -11,8 +11,8 @@ export default {
   async asyncData({ $axios }) {
     const data = await $axios.$post('', {
       jsonrpc: '2.0',
-      method: 'block_statistic',
-      params: [100],
+      method: 'getBlockStatistic',
+      params: [0, 100],
       id: 1,
     });
     if (data.result) {
