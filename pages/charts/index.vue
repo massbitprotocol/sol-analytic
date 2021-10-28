@@ -55,7 +55,6 @@ export default {
   methods: {
     getChartData() {
       return this.dataSource.map(item => {
-        console.log('item :>> ', item);
         return [parseInt(item.date) * 1000, item.total_tx, item.average_block_time, item.total_reward, item.total_fee];
       });
     },

@@ -200,9 +200,5 @@ export default {
       default: () => new Object(),
     },
   },
-
-  created() {
-    console.log('this.transaction :>> ', this.transaction);
-  },
 };
 </script>
