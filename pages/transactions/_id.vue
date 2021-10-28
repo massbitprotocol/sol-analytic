@@ -47,7 +47,7 @@ export default {
   async asyncData({ $axios, params }) {
     const data = await $axios.$post('', {
       jsonrpc: '2.0',
-      method: 'txns_detail_chain',
+      method: 'getTransactionDetail',
       params: [params.id],
       id: 1,
     });
