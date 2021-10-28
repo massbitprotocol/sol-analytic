@@ -1,10 +1,10 @@
 ## Block apis
 Use jsonrpc with entrypoint: http://staging.massbit.io:9090/jsonrpc
-**1. Block list: Get list block infos**
-- method: "block_list"
+1. Block list: Get list block infos
+- method: "getBlockList"
 - Parameters: offset: number, limit: number
 ```
-{"jsonrpc": "2.0", "method": "block_list", "params": [10, 20], "id":1 }
+{"jsonrpc": "2.0", "method": "getBlockList", "params": [10, 20], "id":1 }
 ```
 - Default order by block Timestamp
 - Output example:
@@ -28,11 +28,11 @@ Use jsonrpc with entrypoint: http://staging.massbit.io:9090/jsonrpc
 ```
   Note: currently this api is missing offset parameter
 
-**2. Block detail: Get detail info of a block (Currently block info doesn't have must data)**
-- method: "block_detail",
+2. Block detail: Get detail info of a block (Currently block info doesn't have must data)
+- method: "getBlockDetail",
 - Parameters:  block_slot: number
 ```
-{"jsonrpc": "2.0", "method": "block_detail", "params": [102564336], "id":1 }
+{"jsonrpc": "2.0", "method": "getBlockDetail", "params": [102564336], "id":1 }
 ```
 - Output example:
 ```
@@ -52,11 +52,11 @@ Use jsonrpc with entrypoint: http://staging.massbit.io:9090/jsonrpc
 }
 ```
 
-**3. Block statistic: Get statistic data of blocks by date in form of unixtimestamp. Order by date decreasing**
-- method: "block_statistic",
+3. Block statistic: Get statistic data of blocks by date in form of unixtimestamp. Order by date decreasing
+- method: "getBlockStatistic",
 - Parameters:  offset: number, limit: number
 ```
-{"jsonrpc": "2.0", "method": "block_statistic", "params": [0, 100], "id":1 }
+{"jsonrpc": "2.0", "method": "getBlockStatistic", "params": [0, 100], "id":1 }
 ```
 - Output example:
 ```
@@ -84,11 +84,11 @@ Use jsonrpc with entrypoint: http://staging.massbit.io:9090/jsonrpc
 ```
 
 ##  Transaction apis
-**1. Transaction List: Get common list transaction, order by fist_block_time**
-- Method: "txns_list"
+1. Transaction List: Get common list transaction, order by fist_block_time
+- Method: "getTransactionList"
 - Parameters: offset: number, limit: number
 ```
-{"jsonrpc": "2.0", "method": "txns_list", "params": [0, 100], "id":1 }
+{"jsonrpc": "2.0", "method": "getTransactionList", "params": [0, 100], "id":1 }
 ```
 - Output example:
 ```
@@ -121,27 +121,27 @@ Use jsonrpc with entrypoint: http://staging.massbit.io:9090/jsonrpc
     "id": 1
 }
 ```
-**2. Transaction list by block: Get list transaction included within a block**
-- Method: "txns_block"
+2. Transaction list by block: Get list transaction included within a block
+- Method: "getTransactionByBlock"
 - Parameters: block_slot: number, offset: number, limit: number
 ```
-{"jsonrpc": "2.0", "method": "txns_block", "params": [102149431, 0, 100], "id":1 }
+{"jsonrpc": "2.0", "method": "getTransactionByBlock", "params": [102149431, 0, 100], "id":1 }
 ```
 - Output: same as output of api transaction list
-**3. Transaction list by address: get list transactions related to an address**
-- Method: "txns_address"
+3. Transaction list by address: get list transactions related to an address
+- Method: "getTransactionByAddress"
 - Parameters: address: text, before_address: text(optional), limit: number
 ```
-{"jsonrpc": "2.0", "method": "txns_address", "params": ["tDw82DpNQwC4sUqRt5zCihm1N9ktta51ZyXbWewMsWp", null, 100], "id":1 }
+{"jsonrpc": "2.0", "method": "getTransactionByAddress", "params": ["tDw82DpNQwC4sUqRt5zCihm1N9ktta51ZyXbWewMsWp", null, 100], "id":1 }
 or
-{"jsonrpc": "2.0", "method": "txns_address", "params": ["tDw82DpNQwC4sUqRt5zCihm1N9ktta51ZyXbWewMsWp", "oETvTjKHyT3EHnycHV86k4xfTv2gWUSVTmQxkbLkxCkYyEtzPwTrMXva1BfPHYvZzKSkpxKobG2Sw3vJ3PcCEee", 100], "id":1 }
+{"jsonrpc": "2.0", "method": "getTransactionByAddress", "params": ["tDw82DpNQwC4sUqRt5zCihm1N9ktta51ZyXbWewMsWp", "oETvTjKHyT3EHnycHV86k4xfTv2gWUSVTmQxkbLkxCkYyEtzPwTrMXva1BfPHYvZzKSkpxKobG2Sw3vJ3PcCEee", 100], "id":1 }
 ```
 - Output: same as output of api transaction list
-**4. Transaction detail**
-- Method: "txns_detail"
+4. Transaction detail
+- Method: "getTransactionDetail"
 - Parameters: tx_hash: text
 ```
-{"jsonrpc": "2.0", "method": "txns_detail", "params": ["d6xppvVr3hRgSSQsWm3tcTVV5wwj6d8T7qe7aD3XhB3pZUMDpE14nRVC8o2p3fAzE32yghksmqfNAtbicJrNGp9"], "id":1 }
+{"jsonrpc": "2.0", "method": "getTransactionDetail", "params": ["d6xppvVr3hRgSSQsWm3tcTVV5wwj6d8T7qe7aD3XhB3pZUMDpE14nRVC8o2p3fAzE32yghksmqfNAtbicJrNGp9"], "id":1 }
 ```
 - output
 ```
@@ -191,6 +191,7 @@ or
     "id": 1
 }
 ```
+
 **5. Get account info**
 - Method: "getAccountInfo"
 - Parameters:
@@ -251,7 +252,7 @@ or
 https://solscan.io/account/SSwpkEEcbUqx4vtoEByFjSkhKdCT862DNVb52nZg1UZ/
 - Call
 ```json
-{"jsonrpc": "2.0", "method": "get_account_data", "params": ["SSwpkEEcbUqx4vtoEByFjSkhKdCT862DNVb52nZg1UZ","jsonParsed"], "id":1 }
+{"jsonrpc": "2.0", "method": "getAccountInfo", "params": ["SSwpkEEcbUqx4vtoEByFjSkhKdCT862DNVb52nZg1UZ","jsonParsed"], "id":1 }
 ```
 - Return
 ```json
