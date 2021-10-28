@@ -55,23 +55,7 @@ const columns = [
     width: '160px',
   },
 ];
-const dataSource = [
-  {
-    address: '6iFeRNg5zRrTJCK3WZ6ttu7iKJ84Q1VSSrQsoFkBaYjC',
-    balance_before: 2.343965,
-    balance_after: 2.34396,
-  },
-  {
-    address: '14ivtgssEBoBjuZJtSAPKYgpUK7DmnSwuPMqJoVTSgKJ',
-    balance_before: 0.45710496,
-    balance_after: 0.45710496,
-  },
-  {
-    address: 'CEQdAFKdycHugujQg9k2wbmxjcpdYZyVLfV9WerTnafJ',
-    balance_before: 0.45710496,
-    balance_after: 0.45710496,
-  },
-];
+const dataSource = [];
 export default {
   name: 'TransactionSolBalanceChange',
 

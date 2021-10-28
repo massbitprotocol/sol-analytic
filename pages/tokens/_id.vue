@@ -327,16 +327,21 @@ export default {
     const data = await this.$axios.$post('', {
       jsonrpc: '2.0',
       method: 'getTransactionByAddress',
-      params: [this.id, null, this.transactionLimit],
+      params: [this.address, this.beforeAddress, this.transactionLimit],
       id: 1,
     });
     if (data.result && data.result.values) {
-      if (this.transactionOffset === 0) {
-        this.transactions = data.result.values;
+      const values = data.result.values;
+      if (this.beforeAddress === null) {
+        this.transactions = values;
       } else {
-        this.transactions.push(...data.result.values);
+        this.transactions.push(...values);
       }
-      this.transactionOffset += this.transactionLimit;
+
+      if (values.length > 0) {
+        const lastValue = values[values.length - 1];
+        this.beforeAddress = lastValue[2] || '';
+      }
     }
     this.loadingFetchTransactions = false;
   },
@@ -348,14 +353,14 @@ export default {
       current_tab: 'transactions',
       loadingFetchTransactions: false,
       transactions: [],
-      transactionOffset: 0,
+      beforeAddress: null,
       transactionLimit: 10,
       cacheShowAllInstuction: new Map(),
     };
   },
 
   computed: {
-    id() {
+    address() {
       return this.$route.params.id;
     },
   },

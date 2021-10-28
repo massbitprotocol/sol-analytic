@@ -18,7 +18,11 @@
             <td class="text-base text-gray-500 pr-6 py-3">
               Block
             </td>
-            <td class="pr-6 py-3 text-gray-900">#{{ transaction.slot }}</td>
+            <td class="pr-6 py-3 text-gray-900">
+              <NuxtLink class="text-base text-blue-500" :to="{ name: 'blocks-id', params: { id: transaction.slot } }">
+                #{{ transaction.slot }}
+              </NuxtLink>
+            </td>
           </tr>
 
           <tr>
@@ -95,9 +99,7 @@
             <td class="text-base text-gray-500 pr-6 py-3">
               Fee
             </td>
-            <td class="pr-6 py-3">
-              {{ transaction.fee }}
-            </td>
+            <td class="pr-6 py-3">{{ transaction.fee / 1000000000 }} SOL</td>
           </tr>
           <tr>
             <td class="text-base text-gray-500 pr-6 py-3">
@@ -197,6 +199,10 @@ export default {
       type: Object,
       default: () => new Object(),
     },
+  },
+
+  created() {
+    console.log('this.transaction :>> ', this.transaction);
   },
 };
 </script>
