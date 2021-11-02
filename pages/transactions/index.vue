@@ -178,26 +178,25 @@ const columns = [
 export default {
   name: 'Index',
 
-  async asyncData({ $axios }) {
-    const data = await $axios.$post('', {
-      jsonrpc: '2.0',
-      method: 'getTransactionList',
-      params: [0, 10],
-      id: 1,
-    });
-    if (data.result && data.result.values) {
-      return { dataSource: data.result.values, offset: 10 };
-    }
+  async fetch() {
+    await this.getTransactions();
+  },
+  fetchOnServer: false,
 
-    return { dataSource: [], offset: 0 };
+  created() {
+    this.polling = setInterval(() => {
+      this.getTransactions(this.offset, false);
+    }, 60 * 1000);
   },
 
   data() {
     return {
       columns,
+      dataSource: [],
+      offset: 10,
       cacheShowAllInstuction: new Map(),
       loadingGetMoreTransaction: false,
-      offset: 0,
+      polling: false,
     };
   },
 
@@ -208,6 +207,25 @@ export default {
       const showAllInstuction = !cacheShowAllInstuction.get(signature);
       cacheShowAllInstuction.set(signature, showAllInstuction);
       this.cacheShowAllInstuction = cacheShowAllInstuction;
+    },
+
+    async getTransactions(limit = 10, loading = true) {
+      const data = await this.$axios.$post(
+        '',
+        {
+          jsonrpc: '2.0',
+          method: 'getTransactionList',
+          params: [0, limit],
+          id: 1,
+        },
+        { progress: loading },
+      );
+
+      if (data.result && data.result.values) {
+        this.dataSource = data.result.values;
+      } else {
+        this.dataSource = [];
+      }
     },
 
     async loadMoreTransaction() {
@@ -224,6 +242,10 @@ export default {
       }
       this.loadingGetMoreTransaction = false;
     },
+  },
+
+  beforeDestroy() {
+    clearInterval(this.polling);
   },
 };
 </script>

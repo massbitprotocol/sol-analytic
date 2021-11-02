@@ -109,24 +109,47 @@ const columns = [
 export default {
   name: 'Index',
 
-  async asyncData({ $axios }) {
-    const data = await $axios.$post('', {
-      jsonrpc: '2.0',
-      method: 'getBlockList',
-      params: [0, 10],
-      id: 1,
-    });
-    if (data.result) {
-      return { dataSource: data.result };
-    }
+  async fetch() {
+    await this.getBlocks();
+  },
+  fetchOnServer: false,
 
-    return { dataSource: [] };
+  created() {
+    this.polling = setInterval(() => {
+      this.getBlocks(false);
+    }, 60 * 1000);
   },
 
   data() {
     return {
       columns,
+      dataSource: [],
+      polling: null,
     };
+  },
+
+  methods: {
+    async getBlocks(loading = true) {
+      const data = await this.$axios.$post(
+        '',
+        {
+          jsonrpc: '2.0',
+          method: 'getBlockList',
+          params: [0, 10],
+          id: 1,
+        },
+        { progress: loading },
+      );
+      if (data.result) {
+        this.dataSource = data.result;
+      } else {
+        this.dataSource = [];
+      }
+    },
+  },
+
+  beforeDestroy() {
+    clearInterval(this.polling);
   },
 };
 </script>

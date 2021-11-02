@@ -73,6 +73,7 @@
           </tr>
         </tbody>
       </table>
+      <BlockNotFound v-else />
     </BaseBlock>
 
     <BaseBlock class="mt-5">
