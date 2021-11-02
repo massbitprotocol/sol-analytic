@@ -23,6 +23,8 @@
         <TransactionTokenBalanceChange :transaction="transaction" />
       </template>
     </BaseTabs>
+
+    <TransactionNotFound v-else />
   </div>
 </template>
 
@@ -51,6 +53,7 @@ export default {
       params: [params.id],
       id: 1,
     });
+    console.log('data :>> ', data);
     if (data.result) {
       return { transaction: data.result };
     }
