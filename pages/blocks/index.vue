@@ -117,7 +117,7 @@ export default {
   created() {
     this.polling = setInterval(() => {
       this.getBlocks(false);
-    }, 60 * 1000);
+    }, 10 * 1000);
   },
 
   data() {
@@ -135,7 +135,7 @@ export default {
         {
           jsonrpc: '2.0',
           method: 'getBlockList',
-          params: [0, 10],
+          params: [0, 20],
           id: 1,
         },
         { progress: loading },
