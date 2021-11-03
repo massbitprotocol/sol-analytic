@@ -1,6 +1,18 @@
 <template>
-  <div class="mt-5">
-    <highchart :options="chartOptions" :modules="['exporting']" style="width:100%;" />
+  <div class="py-5">
+    <ChartDailyTransactions class="mb-10" :source="sourceChartTransactions" />
+
+    <ChartAverageRewardAndFee
+      class="mb-10"
+      :sourceFee="sourceChartAverateFee"
+      :sourceReward="sourceChartAverateReward"
+    />
+
+    <ChartDailyTransactionNumber
+      class="mb-10"
+      :sourceTotalTx="sourceChartTransactions"
+      :sourceSuccessTx="sourceChartSuccessTransaction"
+    />
   </div>
 </template>
 
@@ -23,39 +35,28 @@ export default {
   },
 
   computed: {
-    chartOptions() {
-      const ctx = this;
-      return {
-        chart: {
-          zoomType: 'x',
-        },
-        xAxis: {
-          type: 'datetime',
-        },
-        yAxis: {
-          title: {
-            text: 'Transactions per day',
-          },
-        },
-
-        legend: {
-          enabled: false,
-        },
-        series: [
-          {
-            type: 'area',
-            name: 'Total transaction',
-            data: ctx.getChartData(),
-          },
-        ],
-      };
-    },
-  },
-
-  methods: {
-    getChartData() {
+    sourceChartTransactions() {
       return this.dataSource.map(item => {
-        return [parseInt(item.date) * 1000, item.total_tx, item.average_block_time, item.total_reward, item.total_fee];
+        console.log('item :>> ', item);
+        return [parseInt(item.date) * 1000, item.total_tx];
+      });
+    },
+
+    sourceChartAverateFee() {
+      return this.dataSource.map(item => {
+        return [parseInt(item.date) * 1000, parseInt(item.total_fee / item.block_counter)];
+      });
+    },
+
+    sourceChartAverateReward() {
+      return this.dataSource.map(item => {
+        return [parseInt(item.date) * 1000, parseInt(item.total_reward / item.block_counter)];
+      });
+    },
+
+    sourceChartSuccessTransaction() {
+      return this.dataSource.map(item => {
+        return [parseInt(item.date) * 1000, item.success_tx];
       });
     },
   },
