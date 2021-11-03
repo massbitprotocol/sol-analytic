@@ -1,17 +1,15 @@
 <template>
   <div class="py-5">
-    <ChartDailyTransactions class="mb-10" :source="sourceChartTransactions" />
+    <ChartDailyTransactionNumber
+      class="mb-10"
+      :sourceTotalTx="sourceChartTransactions"
+      :sourceSuccessTx="sourceChartSuccessTransaction"
+    />
 
     <ChartAverageRewardAndFee
       class="mb-10"
       :sourceFee="sourceChartAverateFee"
       :sourceReward="sourceChartAverateReward"
-    />
-
-    <ChartDailyTransactionNumber
-      class="mb-10"
-      :sourceTotalTx="sourceChartTransactions"
-      :sourceSuccessTx="sourceChartSuccessTransaction"
     />
   </div>
 </template>
