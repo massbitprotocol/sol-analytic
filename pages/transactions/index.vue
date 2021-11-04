@@ -4,7 +4,7 @@
       Transactions
     </div>
 
-    <TransactionTable :columns="columns" :data-source="dataSource">
+    <TransactionTable :columns="columns" :data-source="dataSource" :loading="loading">
       <template #block="{item}">
         <NuxtLink class="text-base text-blue-500" :to="{ name: 'blocks-id', params: { id: item } }">
           #{{ item }}
@@ -178,8 +178,14 @@ const columns = [
 export default {
   name: 'Index',
 
+  async asyncData({}) {
+    return { loading: true };
+  },
+
   async fetch() {
+    this.loading = true;
     await this.getTransactions();
+    this.loading = false;
   },
   fetchOnServer: false,
 
@@ -198,6 +204,7 @@ export default {
       cacheShowAllInstuction: new Map(),
       loadingGetMoreTransaction: false,
       polling: false,
+      loading: false,
     };
   },
 

@@ -4,7 +4,8 @@
       Blocks
     </div>
 
-    <BaseTable :columns="columns" :data-source="dataSource">
+    <!-- <client-only placeholder="Loading..."> -->
+    <BaseTable :columns="columns" :data-source="dataSource" :loading="loading">
       <template #block_slot="{record,item}">
         <NuxtLink class="text-base text-blue-500" :to="{ name: 'blocks-id', params: { id: record.block_slot } }">
           #{{ item }}
@@ -63,6 +64,7 @@
         {{ item | formatTimeDuration }}
       </template>
     </BaseTable>
+    <!-- </client-only> -->
   </div>
 </template>
 
@@ -109,8 +111,14 @@ const columns = [
 export default {
   name: 'Index',
 
+  async asyncData({}) {
+    return { loading: true };
+  },
+
   async fetch() {
+    this.loading = true;
     await this.getBlocks();
+    this.loading = false;
   },
   fetchOnServer: false,
 
@@ -125,6 +133,7 @@ export default {
       columns,
       dataSource: [],
       polling: null,
+      loading: false,
     };
   },
 
