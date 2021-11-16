@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind screens;
+
+@layer base {
+  svg {
+    @apply inline-block;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-4 bg-primary-background;
+  }
+
+  ::-webkit-scrollbar-corner {
+    @apply bg-primary-background;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-lg border-solid border-4 border-transparent;
+
+    background: #A4A9CE;
+    background-clip: content-box;
+  }
+}

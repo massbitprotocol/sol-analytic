@@ -1,23 +1,64 @@
 {
-  "name": "solana-explorer",
+  "name": "indexer-app",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
+    "lint:style": "stylelint \"**/*.{vue,css}\" --ignore-path .gitignore",
+    "lint": "yarn lint:js && yarn lint:style",
+    "lint:fix": "yarn lint:js --fix && yarn lint:style --fix",
+    "analyze": "nuxt build -a",
+    "serve": "nuxt build && nuxt start",
+    "test": "jest"
+  },
+  "lint-staged": {
+    "*.{js,vue}": "eslint",
+    "*.{css,vue}": "stylelint"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
-    "@nuxtjs/dayjs": "^1.4.1",
+    "@nuxtjs/dayjs": "^1.4.0",
+    "@nuxtjs/robots": "^2.5.0",
+    "@nuxtjs/sitemap": "^2.4.0",
+    "@nuxtjs/svg": "^0.1.12",
     "core-js": "^3.15.1",
-    "nuxt": "^2.15.7",
-    "nuxt-highcharts": "^2.0.1",
-    "v-tooltip": "^3.0.0-alpha.21"
+    "nuxt": "^2.15.8",
+    "portal-vue": "^2.1.7",
+    "vee-validate": "^3.4.14"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.14.7",
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "@nuxt/types": "^2.15.8",
+    "@nuxtjs/eslint-config": "^6.0.1",
+    "@nuxtjs/eslint-module": "^3.0.2",
+    "@nuxtjs/pwa": "^3.3.5",
+    "@nuxtjs/stylelint-module": "^4.0.0",
     "@nuxtjs/tailwindcss": "^4.2.0",
-    "postcss": "^8.3.5"
+    "@tailwindcss/aspect-ratio": "^0.2.1",
+    "@tailwindcss/forms": "^0.3.3",
+    "@tailwindcss/line-clamp": "^0.2.1",
+    "@tailwindcss/typography": "^0.4.1",
+    "@vue/test-utils": "^1.2.1",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^27.0.5",
+    "eslint": "^7.29.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-nuxt": "^2.0.0",
+    "eslint-plugin-vue": "^7.16.0",
+    "husky": "^7.0.1",
+    "jest": "^27.0.5",
+    "lint-staged": "^11.1.2",
+    "postcss": "^8.3.5",
+    "prettier": "^2.3.2",
+    "stylelint": "^13.13.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^22.0.0",
+    "vue-jest": "^3.0.4"
   }
 }

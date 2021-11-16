@@ -1,11 +1,11 @@
 <template>
   <div>
-    Home
+    charts-statistics
   </div>
 </template>
 
 <script>
 export default {
-  name: "HomePage",
-};
+    name:"Index"
+}
 </script>

@@ -1,6 +1,4 @@
-# sol-analytic
-
-Front-end for Massbit analytic
+# Sol Analytic
 
 ## Build Setup
 

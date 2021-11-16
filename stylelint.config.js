@@ -6,7 +6,7 @@ module.exports = {
     'at-rule-no-unknown': [
       true,
       {
-        ignoreAtRules: ['tailwind', 'layer', 'screen', 'responsive'],
+        ignoreAtRules: ['tailwind', 'layer', 'screen'],
       },
     ],
   },
