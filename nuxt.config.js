@@ -19,9 +19,6 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
-  // spa
-  ssr: false,
-
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['~/assets/css/fonts.css'],
 
@@ -79,6 +76,7 @@ export default {
   dayjs: {},
 
   sitemap: {
+    hostname: 'https://solanalytic.massbit.io',
     gzip: true,
   },
 
