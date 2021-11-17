@@ -120,37 +120,62 @@
     </thead>
 
     <tbody class="bg-white">
-      <template v-if="filterSource && filterSource.length > 0">
-        <tr v-for="(data, index) in filterSource" :key="index" class="hover:bg-primary-background">
-          <td
-            v-for="(column, columnIndex) in _columns"
-            :key="columnIndex"
-            :class="[column.class, 'relative px-6 py-4 max-w-0']"
-          >
-            <slot
-              v-if="column.slotScope"
-              :name="column.slotScope"
-              :record="data"
-              :index="index"
-              :item="data[column.dataIndex]"
-            ></slot>
-            <div v-else class="text-base">
-              <template v-if="data.hasOwnProperty(column.dataIndex)">
-                {{ data[column.dataIndex] }}
-              </template>
+      <template v-if="loading">
+        <tr class="h-full">
+          <td :colspan="columns.length">
+            <div class="w-full flex items-center gap-2 justify-center py-15">
+              <svg
+                class="w-6 animate-spin text-primary"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path
+                  class="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+              <span class="text-body-1 text-primary-background"> Loading... </span>
             </div>
           </td>
         </tr>
       </template>
 
       <template v-else>
-        <tr>
-          <td :colspan="_columns.length">
-            <div class="w-full flex flex-col items-center justify-center py-10">
-              <div class="text-body-2 text-neutral-normal/50">No results found</div>
-            </div>
-          </td>
-        </tr>
+        <template v-if="filterSource && filterSource.length > 0">
+          <tr v-for="(data, index) in filterSource" :key="index" class="hover:bg-primary-background">
+            <td
+              v-for="(column, columnIndex) in _columns"
+              :key="columnIndex"
+              :class="[column.class, 'relative px-6 py-4 max-w-0']"
+            >
+              <slot
+                v-if="column.slotScope"
+                :name="column.slotScope"
+                :record="data"
+                :index="index"
+                :item="data[column.dataIndex]"
+              ></slot>
+              <div v-else class="text-base">
+                <template v-if="data.hasOwnProperty(column.dataIndex)">
+                  {{ data[column.dataIndex] }}
+                </template>
+              </div>
+            </td>
+          </tr>
+        </template>
+
+        <template v-else>
+          <tr>
+            <td :colspan="_columns.length">
+              <div class="w-full flex flex-col items-center justify-center py-10">
+                <div class="text-body-2 text-neutral-normal/50">No results found</div>
+              </div>
+            </td>
+          </tr>
+        </template>
       </template>
     </tbody>
   </table>
@@ -161,6 +186,11 @@ export default {
   name: 'BaseTable',
 
   props: {
+    loading: {
+      type: Boolean,
+      default: false,
+    },
+
     columns: {
       type: Array,
       default: () => [],

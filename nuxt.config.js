@@ -23,7 +23,12 @@ export default {
   css: ['~/assets/css/fonts.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: '~/plugins/validate', ssr: true }],
+  plugins: [
+    { src: '~/plugins/validate', ssr: true },
+    '~/plugins/helpers/utils',
+    '~/plugins/helpers/filters',
+    '~/plugins/helpers/directives',
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -32,9 +37,17 @@ export default {
     color,
   },
 
-  publicRuntimeConfig: {},
+  publicRuntimeConfig: {
+    axios: {
+      baseURL: process.env.API_BASE_URL,
+    },
+  },
 
-  privateRuntimeConfig: {},
+  privateRuntimeConfig: {
+    axios: {
+      baseURL: process.env.API_BASE_URL,
+    },
+  },
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
@@ -73,7 +86,9 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 
-  dayjs: {},
+  dayjs: {
+    plugins: ['utc', 'relativeTime', 'duration'],
+  },
 
   sitemap: {
     hostname: 'https://solanalytic.massbit.io',

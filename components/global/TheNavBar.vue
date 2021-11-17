@@ -4,7 +4,7 @@
       <TheLogoDark />
     </div>
 
-    <div class="h-(screen-92) lg:h-(screen-108) flex flex-col justify-between overflow-auto p-5 mt-5">
+    <div class="h-(screen-92) lg:h-(screen-108) flex flex-col justify-between overflow-auto p-5 pt-10">
       <TheRouters />
 
       <TheFooter />
@@ -14,6 +14,6 @@
 
 <script>
 export default {
-name:'TheNavBar'
-}
+  name: 'TheNavBar',
+};
 </script>

@@ -5,7 +5,18 @@
         type="text"
         @focus="showDropdown = true"
         placeholder="Search transactions, blocks, tokens..."
-        class="relative w-full h-[52px] pr-15 flex items-center text-body-2 placeholder-gray-300 rounded-lg"
+        class="
+          relative
+          w-full
+          h-[52px]
+          pr-15
+          flex
+          items-center
+          border border-primary-background
+          text-body-2
+          placeholder-gray-300
+          rounded-lg
+        "
       />
       <span
         class="absolute flex items-center justify-center rounded right-0 px-5 py-2 border-l border-primary-background"

@@ -1,7 +1,7 @@
 <template>
   <div class="mt-4">
     <!-- Header -->
-    <div class="w-full sticky top-0 z-10 pr-4">
+    <div class="w-full sticky top-0 z-10">
       <table class="w-full">
         <colgroup>
           <template v-for="(column, index) in columns">
@@ -29,12 +29,37 @@
     </div>
 
     <!-- Table -->
-    <div class="relative overflow-auto max-h-[500px]">
-      <BaseTable class="table-latest-blocks" :columns="columns" :data-source="source" :showHeader="false" />
+    <div class="relative overflow-auto h-[500px]">
+      <BaseTable
+        class="table-latest-blocks h-full"
+        :columns="columns"
+        :data-source="dataSource"
+        :show-header="false"
+        :loading="loading"
+      >
+        <!-- block_slot -->
+        <template #block_slot="{ record, item }">
+          <NuxtLink class="text-body-1 text-primary" :to="{ name: 'blocks-id', params: { id: record.block_slot } }">
+            #{{ item }}
+          </NuxtLink>
+        </template>
+
+        <!-- timestamp -->
+        <template #timestamp="{ item }">
+          {{ item | formatTimeDuration }}
+        </template>
+
+        <!-- reward -->
+        <template #reward="{ item }">
+          {{ item / 1000000000 }}
+        </template>
+      </BaseTable>
     </div>
 
     <div class="w-full px-4 py-2 border border-primary-background rounded-b-lg">
-      <BaseSecondaryButton class="w-full"> View All Blocks </BaseSecondaryButton>
+      <BaseSecondaryButton class="w-full" @click="$router.push({ name: 'blocks' })">
+        View All Blocks
+      </BaseSecondaryButton>
     </div>
   </div>
 </template>
@@ -43,137 +68,30 @@
 const columns = [
   {
     title: 'Slot',
-    dataIndex: 'slot',
+    dataIndex: 'block_slot',
+    slotScope: 'block_slot',
     width: '180px',
     class: 'text-body-1 text-neutral-darker',
   },
   {
     title: 'Time (UTC)',
     dataIndex: 'timestamp',
+    slotScope: 'timestamp',
     width: '180px',
     class: 'text-body-1 text-neutral-darker',
   },
   {
     title: 'Tx Count',
-    dataIndex: 'tx_count',
+    dataIndex: 'transaction_number',
     width: '180px',
     class: 'text-body-1 text-neutral-darker',
   },
   {
     title: 'Reward (SOL)',
     dataIndex: 'reward',
+    slotScope: 'reward',
     width: '180px',
     class: 'text-body-1 text-neutral-darker',
-  },
-];
-const source = [
-  {
-    slot: '#104810031',
-    timestamp: '1 minute ago',
-    tx_count: '1,024',
-    reward: '0.002575',
-  },
-  {
-    slot: '#104810031',
-    timestamp: '1 minute ago',
-    tx_count: '1,024',
-    reward: '0.002575',
-  },
-  {
-    slot: '#104810031',
-    timestamp: '1 minute ago',
-    tx_count: '1,024',
-    reward: '0.002575',
-  },
-  {
-    slot: '#104810031',
-    timestamp: '1 minute ago',
-    tx_count: '1,024',
-    reward: '0.002575',
-  },
-  {
-    slot: '#104810031',
-    timestamp: '1 minute ago',
-    tx_count: '1,024',
-    reward: '0.002575',
-  },
-  {
-    slot: '#104810031',
-    timestamp: '1 minute ago',
-    tx_count: '1,024',
-    reward: '0.002575',
-  },
-  {
-    slot: '#104810031',
-    timestamp: '1 minute ago',
-    tx_count: '1,024',
-    reward: '0.002575',
-  },
-  {
-    slot: '#104810031',
-    timestamp: '1 minute ago',
-    tx_count: '1,024',
-    reward: '0.002575',
-  },
-  {
-    slot: '#104810031',
-    timestamp: '1 minute ago',
-    tx_count: '1,024',
-    reward: '0.002575',
-  },
-  {
-    slot: '#104810031',
-    timestamp: '1 minute ago',
-    tx_count: '1,024',
-    reward: '0.002575',
-  },
-  {
-    slot: '#104810031',
-    timestamp: '1 minute ago',
-    tx_count: '1,024',
-    reward: '0.002575',
-  },
-  {
-    slot: '#104810031',
-    timestamp: '1 minute ago',
-    tx_count: '1,024',
-    reward: '0.002575',
-  },
-  {
-    slot: '#104810031',
-    timestamp: '1 minute ago',
-    tx_count: '1,024',
-    reward: '0.002575',
-  },
-  {
-    slot: '#104810031',
-    timestamp: '1 minute ago',
-    tx_count: '1,024',
-    reward: '0.002575',
-  },
-  {
-    slot: '#104810031',
-    timestamp: '1 minute ago',
-    tx_count: '1,024',
-    reward: '0.002575',
-  },
-  {
-    slot: '#104810031',
-    timestamp: '1 minute ago',
-    tx_count: '1,024',
-    reward: '0.002575',
-  },
-  {
-    slot: '#104810031',
-    timestamp: '1 minute ago',
-    tx_count: '1,024',
-    reward: '0.002575',
-  },
-  {
-    slot: '#104810031',
-    timestamp: '1 minute ago',
-    tx_count: '1,024',
-    reward: '0.002575',
   },
 ];
 
@@ -183,8 +101,52 @@ export default {
   data() {
     return {
       columns,
-      source,
+      dataSource: [],
+      polling: null,
+      loading: false,
     };
+  },
+
+  beforeDestroy() {
+    if (this.polling) {
+      clearInterval(this.polling);
+    }
+  },
+
+  async created() {
+    this.loading = true;
+
+    await this.getBlocks(false);
+
+    this.loading = false;
+
+    this.startPolling();
+  },
+
+  methods: {
+    async getBlocks(loading = true) {
+      const data = await this.$axios.$post(
+        '',
+        {
+          jsonrpc: '2.0',
+          method: 'getBlockList',
+          params: [0, 10],
+          id: 1,
+        },
+        { progress: loading },
+      );
+      if (data.result) {
+        this.dataSource = data.result;
+      } else {
+        this.dataSource = [];
+      }
+    },
+
+    startPolling() {
+      this.polling = setInterval(() => {
+        this.getBlocks(false);
+      }, 10 * 1000);
+    },
   },
 };
 </script>
