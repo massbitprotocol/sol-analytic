@@ -98,9 +98,9 @@
             <tr>
               <td class="text-body-2 text-neutral-normal font-medium pr-20 py-3">Reward</td>
               <td class="py-3 text-body-2 text-neutral-darkest font-medium">
-                <span>{{ block.reward / 1000000000 }}</span>
+                <span>{{ block.reward / 1000000000 }} SOL ({{ calculatePrice() }})</span>
                 <span class="text-neutral-normal/60 mx-2">|</span>
-                <span class="text-neutral-normal/60">SOL price: ?</span>
+                <span class="text-neutral-normal/60"> SOL price: ${{ solPrice }} </span>
               </td>
             </tr>
             <tr>
@@ -136,6 +136,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'BlocksDetailOverview',
 
@@ -148,6 +150,24 @@ export default {
     loading: {
       type: Boolean,
       default: false,
+    },
+  },
+
+  computed: {
+    ...mapGetters({
+      solPrice: 'tokens/solPrice',
+    }),
+  },
+
+  methods: {
+    calculatePrice() {
+      if (this.solPrice) {
+        const _price = (this.block.reward / 1000000000) * this.solPrice;
+
+        return _price ? _price.toFixed(4) : 0;
+      }
+
+      return 0;
     },
   },
 };

@@ -31,6 +31,8 @@ export default {
     });
 
     if (data.result) {
+      await this.$store.dispatch('tokens/getUsdtPrice', { symbol: 'SOLUSDT' });
+
       this.block = data.result;
     }
   },

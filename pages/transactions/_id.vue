@@ -7,6 +7,12 @@
     </div>
 
     <TransactionsDetailOverview class="mt-7.5" :transaction="transaction" :loading="$fetchState.pending" />
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-5 mt-7.5">
+      <TransactionsDetailInstruction :transaction="transaction" :loading="$fetchState.pending" />
+
+      <TransactionsDetailProgramLog :transaction="transaction" :loading="$fetchState.pending" />
+    </div>
   </div>
 </template>
 

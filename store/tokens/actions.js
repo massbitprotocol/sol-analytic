@@ -12,6 +12,25 @@ export default {
     }
 
     commit('setList', []);
+
     return [];
+  },
+
+  async getUsdtPrice({ commit }, { symbol }) {
+    const { price } = await this.$axios.$get(
+      'https://api.binance.com/api/v3/ticker/price',
+      { params: { symbol } },
+      { progress: false },
+    );
+
+    if (price) {
+      const _price = parseFloat(price);
+
+      commit('setPrice', _price);
+
+      return _price;
+    }
+
+    return false;
   },
 };

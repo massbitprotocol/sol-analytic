@@ -216,7 +216,7 @@
 
 <script>
 export default {
-  name: 'BlocksDetailOverview',
+  name: 'TransactionsDetailOverview',
 
   props: {
     transaction: {
