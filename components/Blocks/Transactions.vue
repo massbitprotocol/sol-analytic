@@ -169,7 +169,7 @@ export default {
         },
         { progress: loading },
       );
-
+      console.log('data :>> ', data);
       if (data.result && data.result.values) {
         this.dataSource = data.result.values;
       } else {

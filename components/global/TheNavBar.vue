@@ -7,7 +7,7 @@
     <div class="h-(screen-92) lg:h-(screen-108) flex flex-col justify-between overflow-auto p-5 pt-10">
       <TheRouters />
 
-      <TheFooter />
+      <TheFooter class="mt-15" />
     </div>
   </div>
 </template>

@@ -1,5 +1,13 @@
 <template>
-  <div>transactions</div>
+  <div class="pb-5">
+    <div class="w-full flex items-center justify-between">
+      <div class="text-title-1 text-neutral-darkest font-bold">Transactions</div>
+
+      <TheSearch class="w-4/12" />
+    </div>
+
+    <TransactionsTable class="mt-7.5" />
+  </div>
 </template>
 
 <script>

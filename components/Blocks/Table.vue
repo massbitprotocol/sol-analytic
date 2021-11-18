@@ -3,14 +3,20 @@
     <BaseTable :columns="columns" :data-source="dataSource" :loading="loading">
       <!-- block_hash -->
       <template #block_hash="{ record, item }">
-        <NuxtLink class="text-body-1 text-primary" :to="{ name: 'blocks-id', params: { id: record.block_slot } }">
+        <NuxtLink
+          class="text-body-1 font-medium text-primary"
+          :to="{ name: 'blocks-id', params: { id: record.block_slot } }"
+        >
           {{ item }}
         </NuxtLink>
       </template>
 
       <!-- block_slot -->
       <template #block_slot="{ record, item }">
-        <NuxtLink class="text-body-1 text-primary" :to="{ name: 'blocks-id', params: { id: record.block_slot } }">
+        <NuxtLink
+          class="text-body-1 font-medium text-primary"
+          :to="{ name: 'blocks-id', params: { id: record.block_slot } }"
+        >
           #{{ item }}
         </NuxtLink>
       </template>
@@ -36,7 +42,7 @@
       :loading="loadingButtonLoadmore"
       @click="loadMoreBlocks"
     >
-      <span class="text-neutral-white text-body-1 font-normal"> Load more </span>
+      <span class="text-neutral-white text-body-1 font-medium font-normal"> Load more </span>
     </BaseButton>
   </div>
 </template>
@@ -55,34 +61,35 @@ const columns = [
     dataIndex: 'block_slot',
     slotScope: 'block_slot',
     width: '120px',
-    class: 'text-body-1 text-neutral-darker',
+    class: 'text-body-1 font-medium text-neutral-darker',
   },
   {
     title: 'Time (UTC)',
     dataIndex: 'timestamp',
     slotScope: 'timestamp',
     width: '120px',
-    class: 'text-body-1 text-neutral-darker',
+    class: 'text-body-1 font-medium text-neutral-darker',
   },
   {
     title: 'Tx Count',
     dataIndex: 'transaction_number',
     width: '100px',
-    class: 'text-body-1 text-neutral-darker',
+    class: 'text-body-1 font-medium text-neutral-darker',
   },
   {
     title: 'Leader',
     dataIndex: 'leader',
     slotScope: 'leader',
     width: '250px',
-    class: 'text-body-1 text-neutral-darker overflow-ellipsis whitespace-nowrap break-words overflow-hidden',
+    class:
+      'text-body-1 font-medium text-neutral-darker overflow-ellipsis whitespace-nowrap break-words overflow-hidden',
   },
   {
     title: 'Reward (SOL)',
     dataIndex: 'reward',
     slotScope: 'reward',
     width: '180px',
-    class: 'text-body-1 text-neutral-darker',
+    class: 'text-body-1 font-medium text-neutral-darker',
   },
 ];
 

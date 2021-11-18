@@ -1,9 +1,9 @@
 <template>
-  <div class="pb-5">smart-contracts</div>
+  <div class="pb-5">Token Detail</div>
 </template>
 
 <script>
 export default {
-  name: 'Index',
+  name: 'Detail',
 };
 </script>

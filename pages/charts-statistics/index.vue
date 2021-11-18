@@ -1,11 +1,9 @@
 <template>
-  <div>
-    charts-statistics
-  </div>
+  <div class="pb-5">charts-statistics</div>
 </template>
 
 <script>
 export default {
-    name:"Index"
-}
+  name: 'Index',
+};
 </script>

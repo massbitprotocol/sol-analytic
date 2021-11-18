@@ -39,7 +39,10 @@
       >
         <!-- block_slot -->
         <template #block_slot="{ record, item }">
-          <NuxtLink class="text-body-1 text-primary" :to="{ name: 'blocks-id', params: { id: record.block_slot } }">
+          <NuxtLink
+            class="text-body-1 font-medium text-primary"
+            :to="{ name: 'blocks-id', params: { id: record.block_slot } }"
+          >
             #{{ item }}
           </NuxtLink>
         </template>
@@ -71,27 +74,27 @@ const columns = [
     dataIndex: 'block_slot',
     slotScope: 'block_slot',
     width: '180px',
-    class: 'text-body-1 text-neutral-darker',
+    class: 'text-body-1 font-medium text-neutral-darker',
   },
   {
     title: 'Time (UTC)',
     dataIndex: 'timestamp',
     slotScope: 'timestamp',
     width: '180px',
-    class: 'text-body-1 text-neutral-darker',
+    class: 'text-body-1 font-medium text-neutral-darker',
   },
   {
     title: 'Tx Count',
     dataIndex: 'transaction_number',
     width: '180px',
-    class: 'text-body-1 text-neutral-darker',
+    class: 'text-body-1 font-medium text-neutral-darker',
   },
   {
     title: 'Reward (SOL)',
     dataIndex: 'reward',
     slotScope: 'reward',
     width: '180px',
-    class: 'text-body-1 text-neutral-darker',
+    class: 'text-body-1 font-medium text-neutral-darker',
   },
 ];
 
