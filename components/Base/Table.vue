@@ -171,7 +171,7 @@
           <tr>
             <td :colspan="_columns.length">
               <div class="w-full flex flex-col items-center justify-center py-10">
-                <div class="text-body-2 text-neutral-normal/50">No results found</div>
+                <div class="text-body-1 text-neutral-darker font-medium">No available data</div>
               </div>
             </td>
           </tr>

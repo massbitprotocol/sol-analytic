@@ -8,11 +8,19 @@
 
     <TransactionsDetailOverview class="mt-7.5" :transaction="transaction" :loading="$fetchState.pending" />
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-5 mt-7.5">
-      <TransactionsDetailInstruction :transaction="transaction" :loading="$fetchState.pending" />
+    <div class="relative grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-5 mt-7.5">
+      <TransactionsDetailInstruction
+        v-if="transaction.instructions && transaction.instructions.length > 0"
+        :instructions="transaction.instructions"
+        :loading="$fetchState.pending"
+      />
 
       <TransactionsDetailProgramLog :transaction="transaction" :loading="$fetchState.pending" />
     </div>
+
+    <TransactionsDetailSolBalanceChange class="mt-15" :transaction="transaction" :loading="$fetchState.pending" />
+
+    <TransactionsDetailTokenBalanceChange class="mt-15" :transaction="transaction" :loading="$fetchState.pending" />
   </div>
 </template>
 
@@ -58,6 +66,7 @@ const transaction = {
   slot: 102648785,
   status: '1',
 };
+
 export default {
   name: 'Detail',
 
