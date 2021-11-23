@@ -3,6 +3,10 @@ export default {
     state.list = list;
   },
 
+  setCurrent(state, current) {
+    state.current = current;
+  },
+
   setPrice(state, solPrice) {
     state.solPrice = solPrice;
   },

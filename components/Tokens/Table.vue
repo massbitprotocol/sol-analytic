@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="pb-15">
     <BaseTable :columns="columns" :data-source="dataSource" :loading="$fetchState.pending">
       <template #no="{ index }">
         {{ index + 1 }}
@@ -9,7 +9,7 @@
         <div class="flex items-center">
           <img class="mr-3" :src="record.logoURI" width="25" height="25" loading="lazy" />
           <NuxtLink
-            class="text-body-1 font-medium text-primary"
+            class="text-body-1 font-medium font-medium text-primary"
             :to="{ name: 'tokens-id', params: { id: record.address } }"
           >
             {{ item }}
@@ -23,7 +23,7 @@
       :loading="loadingButtonLoadmore"
       @click="loadMoreTokens"
     >
-      <span class="text-neutral-white text-body-1 font-normal"> Load more </span>
+      <span class="text-neutral-white text-body-1 font-medium font-normal"> Load more </span>
     </BaseButton>
   </div>
 </template>
@@ -37,20 +37,49 @@ const columns = [
     title: '#',
     slotScope: 'no',
     width: '50px',
-    class: 'text-body-1 text-neutral-darker font-medium',
+    class: 'text-body-1 font-medium text-neutral-darker font-medium',
   },
   {
     title: 'Token',
     dataIndex: 'name',
     slotScope: 'token',
     width: '150px',
-    class: 'text-primary overflow-ellipsis whitespace-nowrap break-words overflow-hidden',
+    class: 'text-body-1  text-primary overflow-ellipsis whitespace-nowrap break-words overflow-hidden',
+    sort: true,
   },
   {
     title: '',
     dataIndex: 'symbol',
     width: '150px',
-    class: 'text-body-1 text-neutral-darker font-medium',
+    class: 'text-body-1 font-medium text-neutral-darker font-medium',
+  },
+  {
+    title: 'Holders',
+    dataIndex: 'holders',
+    width: '150px',
+    class: 'text-body-1 font-medium text-neutral-darker font-medium',
+    sort: true,
+  },
+  {
+    title: 'Price',
+    dataIndex: 'price',
+    width: '150px',
+    class: 'text-body-1 font-medium text-neutral-darker font-medium',
+    sort: true,
+  },
+  {
+    title: '24H',
+    dataIndex: 'days',
+    width: '150px',
+    class: 'text-body-1 font-medium text-neutral-darker font-medium',
+    sort: true,
+  },
+  {
+    title: 'Market Cap (F.D)',
+    dataIndex: 'market_cap',
+    width: '150px',
+    class: 'text-body-1 font-medium text-neutral-darker font-medium',
+    sort: true,
   },
 ];
 export default {
@@ -61,7 +90,7 @@ export default {
       dataSource: [],
       columns,
       offset: 0,
-      limit: 50,
+      limit: 12,
       loadingButtonLoadmore: false,
     };
   },
@@ -74,6 +103,10 @@ export default {
     const _tokens = cloneDeep(this.tokens);
     this.offset += this.limit;
     this.dataSource = _tokens.slice(0, this.offset);
+  },
+
+  created() {
+    console.log('this.tokens :>> ', this.tokens);
   },
 
   computed: {

@@ -23,12 +23,7 @@ export default {
   css: ['~/assets/css/fonts.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    { src: '~/plugins/validate', ssr: true },
-    '~/plugins/helpers/utils',
-    '~/plugins/helpers/filters',
-    '~/plugins/helpers/directives',
-  ],
+  plugins: [{ src: '~/plugins/validate', ssr: true }, '~/plugins/helpers/utils', '~/plugins/helpers/filters'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

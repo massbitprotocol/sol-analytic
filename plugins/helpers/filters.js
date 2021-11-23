@@ -12,3 +12,13 @@ Vue.filter('formatTimeUTC', (timestamp) => {
     .utc(true)
     .format('MMMM DD, YYYY hh:mm:ss A +UTC');
 });
+
+Vue.filter('formatPrice', (number) => {
+  if (number) {
+    return parseFloat(number)
+      .toFixed(2)
+      .replace(/\d(?=(\d{3})+\.)/g, '$&,');
+  }
+
+  return '';
+});

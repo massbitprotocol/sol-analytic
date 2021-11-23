@@ -5,7 +5,7 @@
     <div class="flex-1">
       <TheHeader class="bg-white" />
 
-      <div class="overflow-auto h-(screen-92) lg:h-(screen-108)">
+      <div class="relative overflow-auto h-(screen-92) lg:h-(screen-108)">
         <PortalTarget name="banner" />
 
         <main class="container mx-auto mt-10 flex-auto">

@@ -60,8 +60,8 @@ module.exports = {
         xs: ['0.75rem', '1.125rem'], // 'caption'
       },
       height: {
-        '(screen-108)': `calc(100vh - ${108 / 16}rem)`,
-        '(screen-92)': `calc(100vh - ${92 / 16}rem)`,
+        '(screen-108)': `calc(100vh - ${88 / 16}rem)`,
+        '(screen-92)': `calc(100vh - ${72 / 16}rem)`,
       },
       lineHeight: {
         15.5: '3.875rem',
