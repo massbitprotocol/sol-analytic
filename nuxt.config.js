@@ -72,6 +72,7 @@ export default {
     '@nuxtjs/svg',
     // https://portal-vue.linusb.org/
     'portal-vue/nuxt',
+    'nuxt-highcharts',
   ],
 
   tailwindcss: {

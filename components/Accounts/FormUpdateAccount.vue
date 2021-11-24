@@ -45,7 +45,7 @@
       <!-- Display Name -->
       <ValidationProvider v-slot="{ errors }" rules="required" name="display Name" tag="div" class="w-full mt-7.5">
         <div>
-          <label class="block text-body-1 text-neutral-darkset font-semibold tracking-wide mb-2" for="grid-name">
+          <label class="block text-body-1 text-neutral-darkest font-semibold tracking-wide mb-2" for="grid-name">
             Display Name
           </label>
 
@@ -74,7 +74,7 @@
       <!-- Email -->
       <ValidationProvider v-slot="{ errors }" rules="required" name="email" tag="div" class="w-full mt-7.5">
         <div>
-          <label class="block text-body-1 text-neutral-darkset font-semibold tracking-wide mb-2" for="grid-email">
+          <label class="block text-body-1 text-neutral-darkest font-semibold tracking-wide mb-2" for="grid-email">
             Email
           </label>
 
@@ -107,7 +107,7 @@
       <ValidationProvider v-slot="{ errors }" rules="required" name="old password" tag="div" class="w-full mt-4">
         <div>
           <label
-            class="block text-body-1 text-neutral-darkset font-semibold tracking-wide mb-2"
+            class="block text-body-1 text-neutral-darkest font-semibold tracking-wide mb-2"
             for="grid-old-password"
           >
             Old Password
@@ -139,7 +139,7 @@
       <ValidationProvider v-slot="{ errors }" rules="required" name="new password" tag="div" class="w-full mt-7.5">
         <div>
           <label
-            class="block text-body-1 text-neutral-darkset font-semibold tracking-wide mb-2"
+            class="block text-body-1 text-neutral-darkest font-semibold tracking-wide mb-2"
             for="grid-new-password"
           >
             New Password
@@ -177,7 +177,7 @@
       >
         <div>
           <label
-            class="block text-body-1 text-neutral-darkset font-semibold tracking-wide mb-2"
+            class="block text-body-1 text-neutral-darkest font-semibold tracking-wide mb-2"
             for="grid-confirm-new-password"
           >
             Confirm New Password

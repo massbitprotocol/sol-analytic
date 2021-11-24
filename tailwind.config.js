@@ -34,11 +34,11 @@ module.exports = {
           mid: '#213960',
           darker: '#434C88',
           darkest: '#050C72',
-          darkset: '#050C72',
         },
         primary: {
           DEFAULT: '#2C3ACF',
           background: '#E9EBFA',
+          darker: '#27319B',
         },
         accent: {
           green: '#00B159',

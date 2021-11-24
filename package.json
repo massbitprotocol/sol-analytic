@@ -27,6 +27,7 @@
     "@nuxtjs/svg": "^0.1.12",
     "core-js": "^3.15.1",
     "nuxt": "^2.15.8",
+    "nuxt-highcharts": "^2.0.2",
     "portal-vue": "^2.1.7",
     "vee-validate": "^3.4.14"
   },
