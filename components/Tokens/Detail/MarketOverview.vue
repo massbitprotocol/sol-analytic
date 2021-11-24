@@ -213,10 +213,6 @@ export default {
     },
   },
 
-  created() {
-    console.log('this.token :>> ', this.token);
-  },
-
   computed: {
     price() {
       return this.token.tokenInfo && this.token.tokenInfo.price ? this.token.tokenInfo.price : null;

@@ -2,7 +2,7 @@
   <div>
     <ul class="flex">
       <template v-for="header in headers">
-        <li class="mr-1 cursor-pointer" :key="header.key" @click="_currentTab = header.key">
+        <li :key="header.key" class="mr-1 cursor-pointer" @click="_currentTab = header.key">
           <a
             :class="{
               'bg-white text-primary font-bold border-b-2 border-primary': _currentTab === header.key,
@@ -18,7 +18,7 @@
 
     <div :class="[classBody, 'w-full mt-7.5 bg-white rounded-xl rounded-t-none']">
       <template v-for="header in headers">
-        <div :key="header.key" v-show="header.key === _currentTab">
+        <div v-show="header.key === _currentTab" :key="header.key">
           <slot :name="header.key" />
         </div>
       </template>

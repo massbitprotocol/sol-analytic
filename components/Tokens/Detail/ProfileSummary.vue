@@ -118,10 +118,6 @@ export default {
     },
   },
 
-  created() {
-    console.log('this.token :>> ', this.token);
-  },
-
   computed: {
     name() {
       return this.token.name || null;
