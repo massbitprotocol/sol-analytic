@@ -1,5 +1,3 @@
-import webpack from 'webpack';
-
 const description = `Find and consume data faster from the leading Polkadot/Substrate protocols using our free MassBit explorer. The world’s decentralised data is now available to query using GraphQL.`;
 const color = `#2C3ACF`;
 
