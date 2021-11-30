@@ -113,11 +113,5 @@ export default {
       plugins: [['@babel/plugin-proposal-private-property-in-object', { loose: true }]],
     },
     transpile: ['vee-validate'],
-    plugins: [
-      new webpack.ProvidePlugin({
-        // global modules
-        _: 'lodash',
-      }),
-    ],
   },
 };
