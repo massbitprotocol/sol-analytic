@@ -1,6 +1,6 @@
 <template>
   <BaseGhostBlock>
-    <div class="uppercase text-body-1 text-primary-darker font-bold">Daily Transactions Chart</div>
+    <div class="uppercase text-body-1 text-primary-darker font-bold">Unique Addresses Chart</div>
 
     <div class="flex items-center gap-2 mt-3 text-body-2 font-medium text-neutral-normal">
       <svg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -10,7 +10,7 @@
         />
       </svg>
 
-      Highest number of 9,177,310 transactions on Wednesday, June 16, 2021
+      Highest increase of 2,500,593 new addresses was recorded on Thursday, September 23, 2021
     </div>
 
     <div class="flex items-center gap-2 mt-3 text-body-2 font-medium text-neutral-normal">
@@ -21,7 +21,7 @@
         />
       </svg>
 
-      Lowest number of 1 transactions on Tuesday, June 16, 2020
+      Lowest increase of 1 new addresses was recorded on Monday, June 15, 2020
     </div>
 
     <div v-if="loading" class="h-64 flex items-center justify-center">
@@ -49,7 +49,7 @@
 
 <script>
 export default {
-  name: 'ChartsStatisticsDailyTransactions',
+  name: 'ChartsStatisticsAddressesChart',
 
   props: {
     loading: {

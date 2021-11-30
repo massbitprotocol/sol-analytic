@@ -13,13 +13,18 @@ export default {
     },
   },
 
+  created() {
+    console.log('this.sourceTotalTx :>> ', this.sourceTotalTx);
+  },
+
   computed: {
     chartOptions() {
       const ctx = this;
 
       return {
         chart: {
-          type: 'areaspline',
+          type: 'column',
+          width: 2500,
           zoomType: 'x',
           style: {
             fontFamily: 'Airbnb Cereal App',
@@ -34,7 +39,9 @@ export default {
 
         xAxis: {
           type: 'datetime',
-          allowDecimals: false,
+          startOnTick: true,
+          endOnTick: true,
+          showLastLabel: true,
         },
 
         yAxis: {
@@ -44,30 +51,21 @@ export default {
         },
 
         legend: {
-          enabled: false,
+          enabled: true,
         },
 
         plotOptions: {
-          areaspline: {
-            color: '#2C3ACF',
-            fillColor: 'rgba(233, 235, 250, 0.7)',
-            marker: {
-              enabled: false,
-              symbol: 'circle',
-              radius: 2,
-              states: {
-                hover: {
-                  enabled: true,
-                },
-              },
-            },
-          },
+          column: {},
         },
 
         series: [
           {
             data: ctx.sourceTotalTx,
-            lineWidth: 2,
+            color: '#2C3ACF',
+            fillColor: 'rgba(233, 235, 250, 0.7)',
+            dataGrouping: {
+              enabled: true,
+            },
           },
         ],
 
